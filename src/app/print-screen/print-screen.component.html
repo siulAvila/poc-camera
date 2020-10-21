@@ -1,10 +1,14 @@
 
 <div class="print-screen">
+    
     <video  #video src="" class="print-screen__video" muted autoplay></video>
     <canvas #canvas class="print-screen__canvas"></canvas>
-    <button class="btn btn-primary" (click)="changeCamera()">alterar camera</button>
 
-    <button class="btn btn-primary" (click)="capture()">tirar foto</button>
+    <div class="print-screen__options">
+        <button class="print-screen__btn--change-camera" (click)="changeCamera()">alterar camera</button>
+        <button class="print-screen__btn--capture" (click)="capture()">tirar foto</button>
+    </div>
+  
 </div>
 
 
