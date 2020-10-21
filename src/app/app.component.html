@@ -1,5 +1,9 @@
-<button class="btn btn-primary" (click)="openCamera()">Abrir camera</button>
-<input type="file" accept="image/*" capture="camera">
+
+<div *ngIf="!showCamera">
+  <button class="btn btn-primary" (click)="openCamera()">Abrir camera</button>
+  <input type="file" accept="image/*" capture="camera">
+</div>
+
 
 
 <app-print-screen *ngIf="showCamera"></app-print-screen>
