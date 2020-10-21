@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "camera"
+    }
+  },
+  "defaultProject": "camera",
+  "cli": {
+    "analytics": "d03dc0b9-992e-458f-a828-30f75e576e64"
+  }
 }
