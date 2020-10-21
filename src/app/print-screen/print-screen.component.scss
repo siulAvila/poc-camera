@@ -19,6 +19,7 @@
     bottom: 48px;
     width: 100vw;
     display: flex;
-    justify-content: space-between;
+    z-index: 15;
+    justify-content: space-evenly;
   }
 }

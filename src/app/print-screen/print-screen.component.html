@@ -1,8 +1,8 @@
 
 <div class="print-screen">
-    
+
     <video  #video src="" class="print-screen__video" muted autoplay></video>
-    <canvas #canvas class="print-screen__canvas"></canvas>
+    <canvas #canvas [width]=videoWidth [height]=videoHeight class="print-screen__canvas"></canvas>
 
     <div class="print-screen__options">
         <button class="print-screen__btn--change-camera" (click)="changeCamera()">alterar camera</button>
@@ -12,4 +12,4 @@
 </div>
 
 
-<app-image-preview *ngIf="showPreview"></app-image-preview>
+<app-image-preview [imageUrl]="urlImage" *ngIf="showPreview" (closeImagePreview)="showPreview =  false"></app-image-preview>

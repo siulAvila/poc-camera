@@ -9,8 +9,8 @@ export class PrintScreenComponent implements OnInit {
   @ViewChild('video', { static: true }) videoElement: ElementRef;
   @ViewChild('canvas', { static: true }) canvas: ElementRef;
 
-  videoWidth = 0;
-videoHeight = 0;
+  videoWidth = document.documentElement.clientWidth;
+videoHeight = document.documentElement.clientHeight;
 
 camera: 'user' | 'environment' =  'environment';
 
@@ -52,16 +52,27 @@ showPreview = false;
 }
 
   capture() {
-    this.renderer.setProperty(this.canvas.nativeElement, 'width', this.videoWidth);
-    this.renderer.setProperty(this.canvas.nativeElement, 'height', this.videoHeight);
+    this.renderer.setProperty(this.canvas.nativeElement, 'width', this.videoHeight);
+    this.renderer.setProperty(this.canvas.nativeElement, 'height', this.videoWidth);
     this.canvas.nativeElement.getContext('2d').drawImage(this.videoElement.nativeElement, 0, 0);
     this.urlImage = this.canvas.nativeElement.toDataURL("image/jpeg");
     this.showPreview= true;
 }
 
 changeCamera(){
-  this.camera = this.camera === 'environment' ? 'user' : 'environment';
+  this.constraints.video.facingMode = this.constraints.video.facingMode === 'environment' ? 'user' : 'environment';
+  console.log(this.camera);
+  
+  this.stopCamera();
   this.startCamera();
+}
+
+stopCamera(){
+  console.log(this.videoElement.nativeElement.srcObject);
+  
+  this.videoElement.nativeElement.srcObject.getVideoTracks().forEach(track => {
+    track.stop()
+  });
 }
 
 }
