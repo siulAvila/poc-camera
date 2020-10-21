@@ -12,9 +12,11 @@ export class PrintScreenComponent implements OnInit {
   videoWidth = 0;
 videoHeight = 0;
 
+camera: 'user' | 'environment' =  'environment';
+
 constraints = {
   video: {
-      facingMode: "environment",
+      facingMode: this.camera,
       width: { ideal: 1920 },
       height: { ideal: 1080 }
   }
@@ -55,6 +57,11 @@ showPreview = false;
     this.canvas.nativeElement.getContext('2d').drawImage(this.videoElement.nativeElement, 0, 0);
     this.urlImage = this.canvas.nativeElement.toDataURL("image/jpeg");
     this.showPreview= true;
+}
+
+changeCamera(){
+  this.camera = this.camera === 'environment' ? 'user' : 'environment';
+  this.startCamera();
 }
 
 }
